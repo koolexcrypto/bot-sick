@@ -1,0 +1,8 @@
+[
+    {
+        "id":"GAS-001",
+        "type":"GAS",
+        "title":"Comparing boolean expressions to boolean literals is unnecessary",
+        "description" : "if (<x> == true) is the same as if (<x>), if (<x> == false) is the same as if (!<x>)."
+    }
+]

@@ -1,0 +1,92 @@
+[
+    {
+        "id":"GAS-02",
+        "type":"GAS",
+        "title":"Structs can be packed into fewer storage slots",
+        "description" : "Each slot saved can avoid an extra Gsset (20000 gas) for the first setting of the struct. Subsequent reads as well as writes have smaller gas savings"
+    },
+    {
+        "id":"GAS-11",
+        "type":"GAS",
+        "title":"require()/revert() strings longer than 32 bytes cost extra gas",
+        "description" : "Each extra memory word of bytes past the original 32 incurs an MSTORE which costs 3 gas"
+    },
+    {
+        "id":"GAS-18",
+        "type":"GAS",
+        "title":"Save gas by using private instead of public for constants",
+        "description" : "If needed, the values can be read from the verified contract source code, or if there are multiple values there can be a single getter function that returns a tuple of the values of all currently-public constants. Saves 3406-3606 gas in deployment gas due to the compiler not having to create non-payable getter functions for deployment calldata, not having to store the bytes of the value outside of where it's used, and not adding another entry to the method ID table"
+    },
+    {
+        "id":"GAS-16",
+        "type":"GAS",
+        "title":"++i costs less gas than i++, the same for --i/i-- as well",
+        "description" : "Especially for loops (or any similiar logic that requires an incremental var) as it saves 5 gas per iteration"
+    },
+    {
+        "id":"GAS-22",
+        "type":"GAS",
+        "title":"Use custom errors rather than revert()/require() strings to save gas",
+        "description" : "Custom errors are available from solidity version 0.8.4. Custom errors save ~50 gas each time they're hit by avoiding having to allocate and store the revert string. Not defining the strings also save deployment gas"
+    },
+    {
+        "id":"GAS-24",
+        "type":"GAS",
+        "title":"Constructors can be marked payable",
+        "description" : "Payable functions cost less gas to execute, since the compiler does not have to add extra checks to ensure that a payment wasn't provided. A constructor can safely be marked as payable, since only the deployer would be able to pass funds, and the project itself would not pass any funds"
+    },
+    {
+        "id":"GAS-17",
+        "type":"GAS",
+        "title":"Splitting require() statements that use && saves gas",
+        "description" : "instead of using operator && on single require, use double require check to save more gas"
+    },
+    {
+        "id":"GAS-19",
+        "type":"GAS",
+        "title":"Division by two should use bit shifting",
+        "description" : "X / 2 is the same as X >> 1. While the compiler uses the SHR opcode to accomplish both, the version that uses division incurs an overhead of 20 gas due to JUMPs to and from a compiler utility function that introduces checks which can be avoided by using unchecked {} around the division by two"
+    },
+    {
+        "id":"GAS-23",
+        "type":"GAS",
+        "title":"Functions guaranteed to revert when called by normal users can be marked payable",
+        "description" : "If a function modifier such as onlyOwner is used, the function will revert if a normal user tries to pay the function. Marking the function as payable will lower the gas cost for legitimate callers because the compiler will not include checks for whether a payment was provided. The extra opcodes avoided are CALLVALUE(2),DUP1(3),ISZERO(3),PUSH2(3),JUMPI(10),PUSH1(3),DUP1(3),REVERT(0),JUMPDEST(1),POP(2), which costs an average of about 21 gas per call to the function, in addition to the extra deployment cost"
+    },
+    {
+        "id":"GAS-04", 
+        "type":"GAS",
+        "title":"Using bools for storage incurs overhead",
+        "description" : "Use uint256(1) and uint256(2) for true/false to avoid a Gwarmaccess (100 gas), and to avoid Gsset (20000 gas) when changing from ‘false’ to ‘true’, after having been ‘true’ in the past"
+    },
+    {
+        "id":"GAS-14", 
+        "type":"GAS",
+        "title":">= costs less gas than >",
+        "description" : "The compiler uses opcodes GT and ISZERO for solidity code that uses >, but only requires LT for >=, which saves 3 gas"
+    },
+    {
+        "id":"GAS-12", 
+        "type":"GAS",
+        "title":"Optimize method and variable names to save gas",
+        "description" : "public/external function names and public state variable names can be optimized to save gas. Have a look at this [link](https://medium.com/joyso/solidity-how-does-function-name-affect-gas-consumption-in-smart-contract-47d270d8ac92) for an idea of how it works. Below are the interfaces/contracts that can be optimized. This could save 128 gas for each method during deployment and 22 gas per call"
+    },
+    {
+        "id":"GAS-05",  
+        "type":"GAS",
+        "title":"Zero initialization is redundant",
+        "description" : "In Solidity uint variables are initialized to zero. Setting a uint variable to zero is redundant and can waste gas."
+    },
+    {
+        "id":"GAS-004",
+        "type":"GAS",
+        "title":"Empty blocks should be removed or emit something",
+        "description" : "The code should be refactored such that they no longer exist, or the block should do something useful, such as emitting an event or reverting"
+    },
+    {
+        "id":"GAS-002",
+        "type":"GAS",
+        "title":"Use assembly to check for address(0)",
+        "description" : ""
+    }
+]

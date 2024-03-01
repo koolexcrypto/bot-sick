@@ -1,0 +1,147 @@
+[
+    {
+        "id": "N-35",
+        "type": "NC",
+        "title" : "Mixed usage of int/uint with int256/uint256",
+        "description": "int256/uint256 are the preferred type names (they're what are used for function signatures), so they should be used consistently"
+    },
+    {
+        "id": "N-36",
+        "type": "NC",
+        "title" : "Event is not properly indexed",
+        "description": "Index event fields make the field more quickly accessible to [off-chain tools](https://ethereum.stackexchange.com/questions/40396/can-somebody-please-explain-the-concept-of-event-indexing) that parse events. This is especially useful when it comes to filtering based on an address. However, note that each index field costs extra gas during emission, so it's not necessarily best to index the maximum allowed per event (three fields). Where applicable, each event should use three indexed fields if there are three or more fields, and gas usage is not particularly of concern for the events in question. If there are fewer than three applicable fields, all of the applicable fields should be indexed."
+    },
+
+    {
+        "id": "N-37",
+        "type": "NC",
+        "title" : "override function arguments that are unused should have the variable name removed or commented out to avoid compiler warnings" ,
+        "description" : ""
+    },
+
+    {
+        "id": "N-38",
+        "type": "NC",
+        "title" : "Use @inheritdoc rather than using a non-standard annotation",
+        "description": ""
+    },
+
+    {
+        "id" : "N-39",
+        "type":"NC",
+        "title":"Variable names that consist of all capital letters should be reserved for constant/immutable variables",
+        "description": "If the variable needs to be different based on which class it comes from, a view/pure function should be used instead, [for example](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/76eee35971c2541585e05cbf258510dda7b2fbc6/contracts/token/ERC20/extensions/draft-IERC20Permit.sol#L59)."
+    },
+
+    {
+        "id" : "N-40",
+        "type":"NC",
+        "title":"NatSpec @return argument is missing",
+        "description": ""
+    },
+
+    {
+        "id" : "N-41",
+        "type":"NC",
+        "title":"Function ordering does not follow the Solidity style guide",
+        "description": "According to the [Solidity style guide](https://docs.soliditylang.org/en/v0.8.9/style-guide.html#order-of-functions), functions should be laid out in the following order :constructor(), receive(), fallback(), external, public, internal, private, but the cases below do not follow this pattern"
+    },
+
+    {
+        "id" : "N-42",
+        "type":"NC",
+        "title":"Strings should use double quotes rather than single quotes",
+        "description": ""
+    }
+
+    ,
+
+    {
+        "id" : "N-43",
+        "type":"NC",
+        "title":"Use a more recent version of solidity",
+        "description": "Use a solidity version of at least 0.8.13 to get the ability to use using for with a list of free functions In 0.8.15 the conditions necessary for inlining are relaxed. Benchmarks show that the change significantly decreases the bytecode size (which impacts the deployment cost) while the effect on the runtime gas usage is smaller"
+    },
+
+    {
+        "id" : "N-44",
+        "type":"NC",
+        "title":"Avoid the use of sensitive terms",
+        "description": "Use allowlist/denylist instead of whitelist/blacklist. [check for strings](https://www.zdnet.com/article/mysql-drops-master-slave-and-blacklist-whitelist-terminology/)."
+    },
+
+    {
+        "id" : "N-45",
+        "type":"NC",
+        "title":"Use scientific notation such as 1e18",
+        "description": "Use scientific notation (e.g. 1e16) instead of exponentiation (e.g. 10**16)."
+    },
+
+    {
+        "id" : "N-46",
+        "type":"NC",
+        "title":"address shouldn't be hard-coded",
+        "description": "It is often better to declare addresses as immutable, and assign them via constructor arguments. This allows the code to remain the same across deployments on different networks, and avoids recompilation when addresses need to change."
+    },
+
+    {
+        "id" : "N-47",
+        "type":"NC",
+        "title":"Large assembly blocks should have extensive comments",
+        "description": "Assembly blocks are take a lot more time to audit than normal Solidity code, and often have gotchas and side-effects that the Solidity versions of the same code do not. Consider adding more comments explaining what is being done in every step of the assembly code."
+    },
+
+    {
+        "id" : "N-48",
+        "type":"NC",
+        "title":"abi.encodePacked() should not be used with dynamic types when passing the result to a hash function such as keccak256()",
+        "description": "Use abi.encode() instead which will pad items to 32 bytes, which will prevent hash collisions (e.g. abi.encodePacked(0x123,0x456) => 0x123456 => abi.encodePacked(0x1,0x23456), but abi.encode(0x123,0x456) => 0x0...1230...456). \"Unless there is a compelling reason, abi.encode should be preferred\". If there is only one argument to abi.encodePacked() it can often be cast to bytes() or bytes32() instead. If all arguments are strings and or bytes, bytes.concat() should be used instead"
+    },
+
+    {
+        "id" : "N-49",
+        "type":"NC",
+        "title":"Consider using delete rather than assigning zero to clear values",
+        "description": "The delete keyword more closely matches the semantics of what is being done, and draws more attention to the changing of state, which may lead to a more thorough audit of its associated logic."
+    },
+
+    
+    {
+        "id" : "N-50",
+        "type":"NC",
+        "title":"Cast to bytes or bytes32 for clearer semantic meaning",
+        "description": "This should especially be done if the new value is not required to be different from the old value"
+    },
+
+
+    {
+        "id" : "N-51",
+        "type":"NC",
+        "title":"Custom error has no error details",
+        "description": "Consider adding parameters to the error to indicate which user or values caused the failure"
+    },
+
+    {
+        "id" : "N-52",
+        "type":"NC",
+        "title":"Empty Function Body",
+        "description": "Consider commenting why there empty function's body"
+    },
+
+    
+    {
+        "id" : "N-53",
+        "type":"NC",
+        "title":"Use multiple require() and if statements instead of &&",
+        "description": "Using multiple require() and if improves code readability and makes it easier to debug."
+    },
+
+    {
+        "id" : "N-54",
+        "type":"NC",
+        "title":"else-block not required",
+        "description": "One level of nesting can be removed by not having an else block when the if-block returns"
+    }
+
+   
+]

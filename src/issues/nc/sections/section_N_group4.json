@@ -1,0 +1,65 @@
+[
+    {
+        "id": "N-24",
+        "type": "NC",
+        "title": "Typos in the code",
+        "description": ""
+    },
+    {
+        "id": "N-25",
+        "type": "NC",
+        "title": "Consider using named mappings",
+        "description": "Consider moving to solidity version 0.8.18 or later, and using  [named mappings](https://ethereum.stackexchange.com/questions/51629/how-to-name-the-arguments-in-mapping/145555#145555) to make it easier to understand the purpose of each mapping"
+    },
+    {
+        "id": "N-27",
+        "type": "NC",
+        "title": "Non-external/public variable and function names should begin with an underscore",
+        "description": "Non-external/public variable and function names should begin with an [underscore](https://docs.soliditylang.org/en/latest/style-guide.html#underscore-prefix-for-non-external-functions-and-variables)"
+    },
+    {
+        "id": "N-28",
+        "type": "NC",
+        "title": "Contract uses both require()/revert() as well as custom errors",
+        "description": "Consider using just one method in a single file"
+    },
+    {
+        "id": "N-29",
+        "type": "NC",
+        "title": "Unused contract variables",
+        "description": "Unused contract variablesNote that there may be cases where a variable appears to be used, but this is only because there are multiple definitions of the varible in different files. In such cases, the variable definition should be moved into a separate file. The instances below are the unused variables."
+    },
+    {
+        "id": "N-30",
+        "type": "NC",
+        "title": "Use abi.encodeCall() instead of abi.encodeSignature()/abi.encodeSelector()",
+        "description": "abi.encodeCall() has compiler [type safety](https://github.com/OpenZeppelin/openzeppelin-contracts/issues/3693), whereas the other two functions do not"
+    },
+    {
+        "id": "N-31",
+        "type": "NC",
+        "title": "Events may be emitted out of order due to reentrancy",
+        "description": "Ensure that events follow the best practice of check-effects-interaction, and are emitted before external calls"
+    },
+
+    {
+        "id": "N-32",
+        "type": "NC",
+        "title":"Consider moving msg.sender checks to a common authorization modifier",
+        "description": ""
+    },
+
+    {
+        "id": "N-33",
+        "type": "NC",
+        "title":"Overridden function has no body",
+        "description": "Consider adding a NatSpec comment describing why the function doesn't need a body and or the purpose it serves"
+    },
+
+    {
+        "id": "N-34",
+        "type": "NC",
+        "title" : "Long functions should be refactored into multiple, smaller, functions",
+        "description": ""
+    }
+]

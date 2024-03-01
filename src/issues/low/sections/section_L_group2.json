@@ -1,0 +1,45 @@
+[
+    {
+        "id": "L-02",
+        "type": "L",
+        "title": "Division by zero not prevented",
+        "description": "The divisions below take an input parameter which does not have any zero-value checks, which may lead to the functions reverting when zero is passed."
+    },
+    {
+        "id": "L-03",
+        "type": "L",
+        "title": "Loss of precision",
+        "description": "Division by large numbers may result in the result being zero, due to solidity not supporting fractions. Consider requiring a minimum amount for the numerator to ensure that it is always larger than the denominator"
+    },
+    {
+        "id": "L-04",
+        "type": "L",
+        "title": "require() should be used instead of assert()",
+        "description": "Prior to solidity version 0.8.0, hitting an assert consumes the remainder of the transaction's available gas rather than returning it, as require()/revert() do. assert() should be avoided even past solidity version 0.8.0 as its documentation states that \"The assert function creates an error of type Panic(uint256). ... Properly functioning code should never create a Panic, not even on invalid external input. If this happens, then there is a bug in your contract which you should fix"
+    },
+    {
+        "id": "L-05",
+        "type": "L",
+        "title": "safeApprove() is deprecated",
+        "description": ""
+    },
+    {
+        "id": "L-06",
+        "type": "L",
+        "title": "Missing checks if the variable's address is zero",
+        "description": "Missing checks for address(0x0) when assigning values to address state variables"
+    }
+    ,
+    {
+        "id": "L-07",
+        "type": "L",
+        "title": "Upgradeable contract is missing a __gap variable",
+        "description": "Upgradeable contract is missing a __gap[], example __gap[49] storage variable to allow for new storage variables in later versions"
+    },
+    {
+        "id": "L-08",
+        "type": "L",
+        "title": "External calls in an un-bounded for-loop may result in a DOS",
+        "description": "Consider limiting the number of iterations in for-loops that make external calls"
+    }
+]

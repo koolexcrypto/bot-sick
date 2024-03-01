@@ -1,0 +1,21 @@
+{
+  "name": "bot-sick",
+  "version": "1.0.0",
+  "description": "A starter for developing a bot",
+  "type": "module",
+  "main": "index.js",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node src/index_test.js",
+    "stats": "node scripts/stats.js"
+  },
+  "author": "Evokid & Koolex (https://twitter.com/evokidSoc) (https://twitter.com/KoolexC)",
+  "license": "MIT",
+  "dependencies": {
+    "@solidity-parser/parser": "^0.16.0",
+    "mustache": "^4.2.0"
+  }
+}

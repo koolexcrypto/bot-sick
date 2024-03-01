@@ -1,0 +1,44 @@
+[
+    {
+        "id":"N-15",
+        "type":"NC",
+        "title":"2**<n> - 1 should be re-written as type(uint<n>).max",
+        "description" : "Earlier versions of solidity can use uint<n>(-1) instead. Expressions not including the - 1 can often be re-written to accomodate the change (e.g. by using a > rather than a >=, which will also save some gas)"
+    },
+    {
+        "id":"N-16",
+        "type":"NC",
+        "title":"constants should be defined rather than using magic numbers",
+        "description" : "assembly can benefit from using readable constants instead of hex/numeric literals"
+    },
+    {
+        "id":"N-17",
+        "type":"NC",
+        "title":"Events that mark critical parameter changes should contain both the old and the new value",
+        "description" : "This should especially be done if the new value is not required to be different from the old value"
+    },
+    {
+        "id":"N-19",
+        "type":"NC",
+        "title":"Inconsistent spacing in comments",
+        "description" : "Some lines use // x and some use //x. The instances below point out the usages that don't follow the majority, within each file"
+    },
+    {
+        "id":"N-20",
+        "type":"NC",
+        "title":"Lines are too long",
+        "description" : "Usually lines in source code are limited to 80 characters. Today's screens are much larger so it's reasonable to stretch this in some cases. The solidity style guide recommends a maximumum line length of 120 characters, so the lines below should be split when they reach that length."
+    },
+    {
+        "id":"N-22",
+        "type":"NC",
+        "title":"File is missing NatSpec",
+        "description" : "Solidity contracts can use a special form of comments to provide rich documentation for functions, return variables and more. This special form is named the Ethereum Natural Language Specification Format (NatSpec)."
+    },
+    {
+        "id":"N-23",
+        "type":"NC",
+        "title":"NatSpec @param is missing",
+        "description" : ""
+    }
+]

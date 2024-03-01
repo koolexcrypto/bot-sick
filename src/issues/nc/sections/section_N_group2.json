@@ -1,0 +1,44 @@
+[
+    {
+        "id":"N-04",
+        "type":"NC",
+        "title":"Imports could be organized more systematically",
+        "description" : "The contract's interface should be imported first, followed by each of the interfaces it uses, followed by all other files. The examples below do not follow this layout"
+    },
+    {
+        "id":"N-07",
+        "type":"NC",
+        "title":"Variable names don't follow the Solidity style guide",
+        "description" : "For constant variable names, each word should use all capital letters, with underscores separating each word (CONSTANT_CASE)"
+    },
+    {
+        "id":"N-08",
+        "type":"NC",
+        "title":"else-block is not required",
+        "description" : "One level of nesting can be removed by not having an else block when the if-block returns"
+    },
+    {
+        "id":"N-09",
+        "type":"NC",
+        "title":"Events may be emitted out of order due to a possible reentrancy",
+        "description" : "Ensure that events follow the best practice of check-effects-interaction, and are emitted before external calls"
+    },
+    {
+        "id":"N-11",
+        "type":"NC",
+        "title":"Named mappings is recommended for understandability",
+        "description" : "Consider moving to solidity version 0.8.18 or later, and use named mappings to make it easier to understand the purpose of each mapping"
+    },
+    {
+        "id":"N-13",
+        "type":"NC",
+        "title":"Using a return statement with named return variables is redundant",
+        "description" : "Remove the return statement or change the return variables to unnamed ones."
+    },
+    {
+        "id":"N-26",
+        "type":"NC",
+        "title":"The named return variables are not used anywhere in the function",
+        "description" : "Utilize the named return variables, or change them to unnamed ones instead"
+    }
+]

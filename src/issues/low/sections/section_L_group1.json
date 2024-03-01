@@ -1,0 +1,126 @@
+[
+   
+    {
+        "id": "L-002",
+        "type": "L",
+        "title": "Excess funds sent via msg.value not refunded",
+        "description": "The code below allows the caller to provide Ether, but does not refund the excess amount. The condition should be changed to check for equality, or the code should refund the excess"
+    },
+    {
+        "id": "L-005",
+        "type": "L",
+        "title": "Use of transferFrom() rather than safeTransferFrom() for NFTs could lead to NFTs loss",
+        "description": "The EIP-721 standard says: Code must use the safeTransferFrom() flavor if it hasn't otherwise verified that the receiving address can handle it"
+    },
+    {
+        "id": "L-006",
+        "type": "L",
+        "title": "_safeMint() should be used rather than _mint() wherever possible",
+        "description": "_mint() is discouraged in favor of _safeMint() which ensures that the recipient is either an EOA or implements IERC721Receiver"
+    },
+    {
+        "id": "L-007",
+        "type": "L",
+        "title": "Some tokens may revert when zero value transfers are made",
+        "description": "EIP-20 states that zero-valued transfers must be accepted. However, some tokens such as LEND will revert if this is attempted, which may cause transactions to revert. Consider skipping the transfer if the amount is zero."
+    },
+    {
+        "id": "L-008",
+        "type": "L",
+        "title": "approve()/safeApprove() may revert if the current approval is not zero",
+        "description": "Calling approve() without first calling approve(0) will revert with some tokens if the current approval is non-zero (e.g. USDT). safeApprove() implements this protection. Always reset the approval to zero before changing it to a new value, or use safeIncreaseAllowance()/safeDecreaseAllowance()"
+    },
+    {
+        "id": "L-009",
+        "type": "L",
+        "title": "Missing contract-existence checks before low-level calls",
+        "description": "Low-level calls return success if there is no code present at the specified address. In addition to the zero-address checks, add a check to verify that `<address>.code.length > 0`"
+    },
+    {
+        "id": "L-010",
+        "type": "L",
+        "title": "External call recipient may consume all transaction gas",
+        "description": "There is no limit specified on the amount of gas used, so the recipient can use up all of the transaction's gas, causing it to revert. Consider using `addr.call{gas: <amount>}()`"
+    },
+
+    {
+        "id": "L-012",
+        "type": "L",
+        "title": "Allowed fees/rates should be capped by smart contracts",
+        "description": "Fees/rates should be required to be below 100%, preferably at a much lower limit, to ensure users don't have to monitor the blockchain for changes prior to using the protocol"
+    },
+    {
+        "id": "L-013",
+        "type": "L",
+        "title": "Unsafe downcast",
+        "description": "When a type is downcast to a smaller type, the higher order bits are truncated, effectively applying a modulo to the original value. Without any other checks, this wrapping will lead to unexpected behavior and bugs"
+    },
+    {
+        "id": "L-014",
+        "type": "L",
+        "title": "Draft imports may break in new minor versions",
+        "description": "While draft contracts (e.g. OpenZeppelin) are safe to use and have been audited, their 'draft' status means that the EIPs they're based on are not finalized, and thus there may be breaking changes."
+    },
+    {
+        "id": "L-015",
+        "type": "L",
+        "title": "Functions calling contracts/addresses with transfer hooks are missing reentrancy guards",
+        "description": "Even if the function follows the best practice of check-effects-interaction, not using a reentrancy guard when there may be transfer hooks will open the users of this protocol up to read-only reentrancies. Check: https://chainsecurity.com/curve-lp-oracle-manipulation-post-mortem/"
+    },
+    {
+        "id": "L-016",
+        "type": "L",
+        "title": "decimals() is not a part of the EIP20 standard",
+        "description": "The decimals() function is not a part of the EIP20 standard, and was added later as an optional extension. As such, some valid ERC20 tokens do not support this interface, so it is unsafe to call this function"
+    },
+    {
+        "id": "L-017",
+        "type": "L",
+        "title": "tokenURI() does not follow EIP-721",
+        "description": "EIP721 states that tokenURI() \"Throws if _tokenId is not a valid NFT\", which the code below does not do. If the NFT doens't exist, tokenURI() should revert"
+    },
+    {
+        "id": "L-018",
+        "type": "L",
+        "title": "Contracts are vulnerable to fee-on-transfer token related accounting issues",
+        "description": "Without measuring the balance before and after the transfer, there's no way to ensure that the exact amount was transferred. This is not safe when the token has a fee-on-transfer mechanism"
+    },
+    {
+        "id": "L-019",
+        "type": "L",
+        "title": "latestAnswer() is deprecated",
+        "description": "Use `latestRoundData()` instead so that you can tell whether the answer is stale or not. The `latestAnswer()` function returns zero if it is unable to fetch data, which may be the case if ChainLink stops supporting this API. The API and its deprecation message no longer even appear on the ChainLink website, so it is dangerous to continue using it."
+    },
+    {
+        "id": "L-020",
+        "type": "L",
+        "title": "Arrays do not have pop operations",
+        "description": "Arrays without the pop operation in Solidity could possibly lead to inefficient memory management. It also increases the likelihood of out-of-gas errors. In some cases, this could cause DoS if not used carefully."
+    },
+    {
+        "id": "L-021",
+        "type": "L",
+        "title": "Use of `ecrecover` is susceptible to signature malleability",
+        "description": "The built-in EVM precompile `ecrecover` is susceptible to signature malleability. Consider using OpenZeppelin ECDSA library instead"
+    },
+    {
+        "id": "L-022",
+        "type": "L",
+        "title": "Array lengths not checked",
+        "description": "If the length of the arrays are not required to be of the same length, user operations may not be fully executed due to a mismatch in the number of items iterated over, versus the number of items provided in the second array"
+    },
+    {
+        "id": "L-023",
+        "type": "L",
+        "title": "Missing checks for address(0x0) when assigning values to address state variables",
+        "description": ""
+    }
+    
+
+
+
+    
+
+
+    
+]

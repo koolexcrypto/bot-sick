@@ -1,0 +1,50 @@
+[
+    {
+        "id": "N-01",
+        "type": "NC",
+        "title": "Consider disabling renounceOwnership()",
+        "description": "If the plan for your project does not include eventually giving up all ownership control, consider overwriting OpenZeppelin's Ownable's renounceOwnership() function in order to disable it."
+    },
+    {
+        "id": "N-02",
+        "type": "NC",
+        "title": "Events are missing sender information",
+        "description": "When an action is triggered based on a user's action, not being able to filter based on who triggered the action makes event processing a lot more cumbersome. Including the msg.sender the events of these types of action will make events much more useful to end users, especially when msg.sender is not tx.origin."
+    },
+    {
+        "id": "N-03",
+        "type": "NC",
+        "title": "Variables need not be initialized to zero",
+        "description": "The default value for variables is zero, so initializing them to zero is superfluous."
+    },
+    {
+        "id": "N-05",
+        "type": "NC",
+        "title": "Large numeric literals should use underscores for readability",
+        "description": ""
+    },
+    {
+        "id": "N-06",
+        "type": "NC",
+        "title": "Constants in comparisons should appear on the left side",
+        "description": ""
+    },
+    {
+        "id": "N-10",
+        "type": "NC",
+        "title": "if-statement can be converted to a ternary",
+        "description": "The code can be made more compact while also increasing readability by converting the following if-statements to ternaries (e.g. foo += (x > y) ? a : b)"
+    },
+    {
+        "id": "N-12",
+        "type": "NC",
+        "title": "Import declarations should import specific identifiers, rather than the whole file",
+        "description": "Using import declarations of the form import {<identifier_name>} from \"some/file.sol\" avoids polluting the symbol namespace making flattened files smaller, and speeds up compilation"
+    },
+    {
+        "id": "N-14",
+        "type": "NC",
+        "title": "Public functions not called by the contract should be declared external instead",
+        "description": "Contracts are allowed to override their parents' functions and change the visibility from external to public"
+    }
+]

@@ -1,0 +1,20 @@
+[
+    {
+        "id": "M-01",
+        "type": "M",
+        "title": "The owner is a single point of failure and a centralization risk",
+        "description": "Having a single EOA as the only owner of contracts is a large centralization risk and a single point of failure. A single private key may be taken in a hack, or the sole holder of the key may become unable to retrieve the key when necessary. Consider changing to a multi-signature setup, or having a role-based authorization model"
+    } ,
+    {
+        "id": "M-02",
+        "type": "M",
+        "title": "Unsafe use of transfer()/transferFrom() of ERC20 tokens",
+        "description": ""
+    },
+    {
+        "id": "M-06",
+        "type": "M",
+        "title": "Return values of transfer()/transferFrom() not checked",
+        "description": "Not all IERC20 implementations revert() when there's a failure in transfer()/transferFrom(). The function signature has a boolean return value and they indicate errors that way instead. By not checking the return value, operations that should have marked as failed, may potentially go through without actually making a transfer"
+    }
+]
