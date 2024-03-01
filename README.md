@@ -140,4 +140,4 @@ As you can see, the testing will show you the missing issues.
 
 ***If you feel this was helpful to you, please feel free to share it on X (Twitter) tagging Koolex and evokidSoc***
  
-Note: There are areas where the analayzer can still be improved especially the accuracy of some issues reported. Feel free to do so!
+Note: there are areas where the analayzer can still be improved especially the accuracy of some issues reported. Feel free to do so!
