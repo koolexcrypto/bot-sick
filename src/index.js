@@ -6,7 +6,7 @@ console.log('----SolidityAnalysisResult----');
 let fileNames = [
     "sample-contract/example.sol",
 ]
-
+// This is used for generating links in the report.
 const baseURL = 'https://github.com/code-423n4/';
 
 const data = await reporter.generateReports('Contest Name',baseURL,fileNames);
